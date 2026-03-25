@@ -489,12 +489,12 @@ nv_drm_atomic_apply_modeset_config(struct drm_device *dev,
                                    requested_config,
                                    &reply_config,
                                    commit)) {
-        NV_DRM_DEV_LOG_ERR(
-            nv_dev,
-            "Failed to apply modeset config (commit=%u, flipResult=%u)",
-            commit,
-            reply_config.flipResult);
         if (commit || reply_config.flipResult != NV_KMS_FLIP_RESULT_IN_PROGRESS) {
+            NV_DRM_DEV_LOG_ERR(
+                nv_dev,
+                "Failed to apply modeset config (commit=%u, flipResult=%u)",
+                commit,
+                reply_config.flipResult);
             return -EINVAL;
         }
     }
